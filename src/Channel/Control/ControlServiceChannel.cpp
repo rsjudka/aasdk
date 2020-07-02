@@ -106,6 +106,12 @@ void ControlServiceChannel::sendShutdownResponse(const proto::messages::Shutdown
     this->send(std::move(message), std::move(promise));
 }
 
+void ControlServiceChannel::sendVoiceSessionResponse(const proto::messages::VoiceSessionResponse& response, SendPromise::Pointer promise)
+{
+  // not implemented    
+}
+
+
 void ControlServiceChannel::sendNavigationFocusResponse(const proto::messages::NavigationFocusResponse& response, SendPromise::Pointer promise)
 {
     auto message(std::make_shared<messenger::Message>(channelId_, messenger::EncryptionType::ENCRYPTED, messenger::MessageType::SPECIFIC));
@@ -164,6 +170,9 @@ void ControlServiceChannel::messageHandler(messenger::Message::Pointer message, 
     case proto::ids::ControlMessage::PING_RESPONSE:
         this->handlePingResponse(payload, std::move(eventHandler));
         break;
+    case proto::ids::ControlMessage::VOICE_SESSION_REQUEST:
+        this->handleVoiceSessionRequest(payload, std::move(eventHandler));
+        break;
     default:
         AASDK_LOG(error) << "[ControlServiceChannel] message not handled: " << messageId.getId();
         this->receive(std::move(eventHandler));
@@ -208,6 +217,21 @@ void ControlServiceChannel::handleAudioFocusRequest(const common::DataConstBuffe
         eventHandler->onChannelError(error::Error(error::ErrorCode::PARSE_PAYLOAD));
     }
 }
+
+void ControlServiceChannel::handleVoiceSessionRequest(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler)
+{
+    proto::messages::VoiceSessionRequest request;
+    if(request.ParseFromArray(payload.cdata, payload.size))
+    {
+        eventHandler->onVoiceSessionRequest(request);
+    }
+    else
+    {
+        eventHandler->onChannelError(error::Error(error::ErrorCode::PARSE_PAYLOAD));
+    }
+}
+
+
 
 void ControlServiceChannel::handleShutdownRequest(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler)
 {
