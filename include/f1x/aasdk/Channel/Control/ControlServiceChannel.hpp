@@ -48,7 +48,6 @@ public:
     void sendShutdownResponse(const proto::messages::ShutdownResponse& response, SendPromise::Pointer promise) override;
     void sendNavigationFocusResponse(const proto::messages::NavigationFocusResponse& respons, SendPromise::Pointer promisee) override;
     void sendPingRequest(const proto::messages::PingRequest& request, SendPromise::Pointer promise) override;
-    void sendVoiceSessionResponse(const proto::messages::VoiceSessionResponse& respons, SendPromise::Pointer promise) override;
 
 private:
     using std::enable_shared_from_this<ControlServiceChannel>::shared_from_this;

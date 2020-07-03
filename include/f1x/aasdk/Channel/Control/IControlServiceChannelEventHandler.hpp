@@ -28,7 +28,6 @@
 #include <aasdk_proto/NavigationFocusRequestMessage.pb.h>
 #include <aasdk_proto/PingResponseMessage.pb.h>
 #include <aasdk_proto/VoiceSessionRequestMessage.pb.h>
-#include <aasdk_proto/VoiceSessionResponseMessage.pb.h>
 
 namespace f1x
 {

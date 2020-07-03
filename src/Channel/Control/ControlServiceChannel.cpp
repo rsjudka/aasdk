@@ -106,11 +106,6 @@ void ControlServiceChannel::sendShutdownResponse(const proto::messages::Shutdown
     this->send(std::move(message), std::move(promise));
 }
 
-void ControlServiceChannel::sendVoiceSessionResponse(const proto::messages::VoiceSessionResponse& response, SendPromise::Pointer promise)
-{
-  // not implemented    
-}
-
 
 void ControlServiceChannel::sendNavigationFocusResponse(const proto::messages::NavigationFocusResponse& response, SendPromise::Pointer promise)
 {

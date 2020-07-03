@@ -57,7 +57,6 @@ public:
     virtual void sendShutdownRequest(const proto::messages::ShutdownRequest& request, SendPromise::Pointer promise) = 0;
     virtual void sendShutdownResponse(const proto::messages::ShutdownResponse& response, SendPromise::Pointer promise) = 0;
     virtual void sendNavigationFocusResponse(const proto::messages::NavigationFocusResponse& response, SendPromise::Pointer promise) = 0;
-    virtual void sendVoiceSessionResponse(const proto::messages::VoiceSessionResponse& response, SendPromise::Pointer promise) = 0;
     virtual void sendPingRequest(const proto::messages::PingRequest& request, SendPromise::Pointer promise) = 0;
 };
 
