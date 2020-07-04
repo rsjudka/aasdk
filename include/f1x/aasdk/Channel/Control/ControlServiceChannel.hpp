@@ -60,6 +60,7 @@ private:
     void handleShutdownResponse(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler);
     void handleNavigationFocusRequest(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler);
     void handlePingResponse(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler);
+    void handleVoiceSessionRequest(const common::DataConstBuffer& payload, IControlServiceChannelEventHandler::Pointer eventHandler);
 };
 
 }
